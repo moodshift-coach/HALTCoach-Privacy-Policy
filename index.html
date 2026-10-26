@@ -8,851 +8,947 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0A0A0F;
-    --bg2: #0F0F18;
-    --bg3: #13131E;
-    --green: #00C896;
-    --green-dim: rgba(0,200,150,0.12);
-    --green-glow: rgba(0,200,150,0.25);
-    --border: rgba(0,200,150,0.15);
-    --border-subtle: rgba(255,255,255,0.06);
-    --text: #E8E8F0;
-    --text-secondary: #8888AA;
-    --text-dim: #555570;
-    --card-bg: rgba(255,255,255,0.03);
-  }
+:root {
+--bg: #0A0A0F;
+--bg2: #0F0F18;
+--bg3: #13131E;
+--green: #00C896;
+--green-dim: rgba(0,200,150,0.12);
+--green-glow: rgba(0,200,150,0.25);
+--border: rgba(0,200,150,0.15);
+--border-subtle: rgba(255,255,255,0.06);
+--text: #E8E8F0;
+--text-secondary: #8888AA;
+--text-dim: #555570;
+--card-bg: rgba(255,255,255,0.03);
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'DM Sans', sans-serif;
+font-size: 15px;
+line-height: 1.7;
+min-height: 100vh;
+-webkit-font-smoothing: antialiased;
+}
 
-  /* Subtle grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,200,150,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,200,150,0.03) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* Subtle grid background */
+body::before {
+content: '';
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(rgba(0,200,150,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,200,150,0.03) 1px, transparent 1px);
+background-size: 48px 48px;
+pointer-events: none;
+z-index: 0;
+}
 
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-  }
+.container {
+max-width: 720px;
+margin: 0 auto;
+padding: 0 20px;
+position: relative;
+z-index: 1;
+}
 
-  /* HEADER */
-  header {
-    padding: 48px 0 40px;
-    border-bottom: 1px solid var(--border-subtle);
-    margin-bottom: 48px;
-  }
+/* HEADER */
+header {
+padding: 48px 0 40px;
+border-bottom: 1px solid var(--border-subtle);
+margin-bottom: 48px;
+}
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 32px;
-    text-decoration: none;
-  }
+.logo {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 32px;
+text-decoration: none;
+}
 
-  .logo-icon {
-    width: 36px;
-    height: 36px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-  }
+.logo-icon {
+width: 36px;
+height: 36px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3px;
+}
 
-  .logo-icon span {
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-    font-weight: 600;
-    color: var(--bg);
-    font-family: 'DM Mono', monospace;
-  }
+.logo-icon span {
+border-radius: 3px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 8px;
+font-weight: 600;
+color: var(--bg);
+font-family: 'DM Mono', monospace;
+}
 
-  .logo-icon span:nth-child(1) { background: var(--green); }
-  .logo-icon span:nth-child(2) { background: rgba(0,200,150,0.75); }
-  .logo-icon span:nth-child(3) { background: rgba(0,200,150,0.75); }
-  .logo-icon span:nth-child(4) { background: rgba(0,200,150,0.5); }
+.logo-icon span:nth-child(1) { background: var(--green); }
+.logo-icon span:nth-child(2) { background: rgba(0,200,150,0.75); }
+.logo-icon span:nth-child(3) { background: rgba(0,200,150,0.75); }
+.logo-icon span:nth-child(4) { background: rgba(0,200,150,0.5); }
 
-  .logo-text {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
+.logo-text {
+font-size: 17px;
+font-weight: 600;
+color: var(--text);
+letter-spacing: -0.02em;
+}
 
-  .logo-sub {
-    font-size: 11px;
-    color: var(--green);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    font-family: 'DM Mono', monospace;
-  }
+.logo-sub {
+font-size: 11px;
+color: var(--green);
+font-weight: 400;
+letter-spacing: 0.04em;
+font-family: 'DM Mono', monospace;
+}
 
-  .page-title {
-    font-size: clamp(32px, 6vw, 48px);
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin-bottom: 12px;
-  }
+.page-title {
+font-size: clamp(32px, 6vw, 48px);
+font-weight: 300;
+letter-spacing: -0.03em;
+line-height: 1.15;
+margin-bottom: 12px;
+}
 
-  .page-title em {
-    font-style: italic;
-    color: var(--green);
-    text-shadow: 0 0 40px var(--green-glow);
-  }
+.page-title em {
+font-style: italic;
+color: var(--green);
+text-shadow: 0 0 40px var(--green-glow);
+}
 
-  .meta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-  }
+.meta-row {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-top: 20px;
+}
 
-  .meta-badge {
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-    color: var(--text-secondary);
-    background: var(--card-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 4px;
-    padding: 4px 10px;
-  }
+.meta-badge {
+font-size: 11px;
+font-family: 'DM Mono', monospace;
+color: var(--text-secondary);
+background: var(--card-bg);
+border: 1px solid var(--border-subtle);
+border-radius: 4px;
+padding: 4px 10px;
+}
 
-  .meta-badge.green {
-    color: var(--green);
-    border-color: var(--border);
-    background: var(--green-dim);
-  }
+.meta-badge.green {
+color: var(--green);
+border-color: var(--border);
+background: var(--green-dim);
+}
 
-  /* LANG TABS */
-  .lang-tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 48px;
-    background: var(--bg3);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
-    padding: 4px;
-  }
+/* LANG TABS */
+.lang-tabs {
+display: flex;
+gap: 4px;
+margin-bottom: 48px;
+background: var(--bg3);
+border: 1px solid var(--border-subtle);
+border-radius: 10px;
+padding: 4px;
+}
 
-  .lang-tab {
-    flex: 1;
-    padding: 9px;
-    border: none;
-    border-radius: 7px;
-    background: transparent;
-    color: var(--text-secondary);
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.04em;
-  }
+.lang-tab {
+flex: 1;
+padding: 9px;
+border: none;
+border-radius: 7px;
+background: transparent;
+color: var(--text-secondary);
+font-family: 'DM Mono', monospace;
+font-size: 12px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+letter-spacing: 0.04em;
+}
 
-  .lang-tab:hover { color: var(--text); }
+.lang-tab:hover { color: var(--text); }
 
-  .lang-tab.active {
-    background: var(--green-dim);
-    color: var(--green);
-    border: 1px solid var(--border);
-  }
+.lang-tab.active {
+background: var(--green-dim);
+color: var(--green);
+border: 1px solid var(--border);
+}
 
-  /* CONTENT */
-  .lang-content { display: none; }
-  .lang-content.active { display: block; }
+/* CONTENT */
+.lang-content { display: none; }
+.lang-content.active { display: block; }
 
-  /* SUMMARY CARDS */
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 48px;
-  }
+/* SUMMARY CARDS */
+.summary-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+margin-bottom: 48px;
+}
 
-  @media (max-width: 480px) {
-    .summary-grid { grid-template-columns: 1fr; }
-  }
+@media (max-width: 480px) {
+.summary-grid { grid-template-columns: 1fr; }
+}
 
-  .summary-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
+.summary-card {
+background: var(--card-bg);
+border: 1px solid var(--border-subtle);
+border-radius: 12px;
+padding: 16px;
+display: flex;
+align-items: flex-start;
+gap: 12px;
+}
 
-  .summary-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
+.summary-icon {
+font-size: 18px;
+flex-shrink: 0;
+margin-top: 1px;
+}
 
-  .summary-card strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
+.summary-card strong {
+display: block;
+font-size: 13px;
+font-weight: 600;
+color: var(--text);
+margin-bottom: 2px;
+}
 
-  .summary-card p {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 0;
-  }
+.summary-card p {
+font-size: 12px;
+color: var(--text-secondary);
+line-height: 1.5;
+margin: 0;
+}
 
-  /* DISCLAIMER */
-  .disclaimer {
-    background: rgba(255,180,0,0.06);
-    border: 1px solid rgba(255,180,0,0.2);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 40px;
-  }
+/* DISCLAIMER */
+.disclaimer {
+background: rgba(255,180,0,0.06);
+border: 1px solid rgba(255,180,0,0.2);
+border-radius: 12px;
+padding: 20px 24px;
+margin-bottom: 40px;
+}
 
-  .disclaimer-label {
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-    color: #FFB400;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-  }
+.disclaimer-label {
+font-size: 11px;
+font-family: 'DM Mono', monospace;
+color: #FFB400;
+font-weight: 500;
+letter-spacing: 0.08em;
+margin-bottom: 8px;
+}
 
-  .disclaimer p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-    margin: 0;
-  }
+.disclaimer p {
+font-size: 13px;
+color: rgba(255,255,255,0.7);
+line-height: 1.6;
+margin: 0;
+}
 
-  /* SECTIONS */
-  section {
-    margin-bottom: 40px;
-  }
+/* SECTIONS */
+section {
+margin-bottom: 40px;
+}
 
-  h2 {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-subtle);
-    text-shadow: 0 0 30px rgba(0,200,150,0.15);
-  }
+h2 {
+font-size: 20px;
+font-weight: 500;
+letter-spacing: -0.02em;
+color: var(--text);
+margin-bottom: 16px;
+padding-bottom: 12px;
+border-bottom: 1px solid var(--border-subtle);
+text-shadow: 0 0 30px rgba(0,200,150,0.15);
+}
 
-  h3 {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--green);
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.04em;
-    margin-bottom: 10px;
-    margin-top: 20px;
-  }
+h3 {
+font-size: 13px;
+font-weight: 600;
+color: var(--green);
+font-family: 'DM Mono', monospace;
+letter-spacing: 0.04em;
+margin-bottom: 10px;
+margin-top: 20px;
+}
 
-  p {
-    color: rgba(232,232,240,0.8);
-    margin-bottom: 12px;
-    font-size: 14px;
-  }
+p {
+color: rgba(232,232,240,0.8);
+margin-bottom: 12px;
+font-size: 14px;
+}
 
-  p:last-child { margin-bottom: 0; }
+p:last-child { margin-bottom: 0; }
 
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 12px;
-  }
+.card {
+background: var(--card-bg);
+border: 1px solid var(--border-subtle);
+border-radius: 12px;
+padding: 20px 24px;
+margin-bottom: 12px;
+}
 
-  .card-green {
-    border-color: var(--border);
-    background: var(--green-dim);
-  }
+.card-green {
+border-color: var(--border);
+background: var(--green-dim);
+}
 
-  ul {
-    list-style: none;
-    padding: 0;
-  }
+ul {
+list-style: none;
+padding: 0;
+}
 
-  ul li {
-    padding: 6px 0;
-    padding-left: 18px;
-    position: relative;
-    font-size: 14px;
-    color: rgba(232,232,240,0.8);
-    border-bottom: 1px solid var(--border-subtle);
-  }
+ul li {
+padding: 6px 0;
+padding-left: 18px;
+position: relative;
+font-size: 14px;
+color: rgba(232,232,240,0.8);
+border-bottom: 1px solid var(--border-subtle);
+}
 
-  ul li:last-child { border-bottom: none; }
+ul li:last-child { border-bottom: none; }
 
-  ul li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    color: var(--green);
-    font-weight: 700;
-  }
+ul li::before {
+content: '·';
+position: absolute;
+left: 0;
+color: var(--green);
+font-weight: 700;
+}
 
-  .check-list li::before {
-    content: '✓';
-    color: var(--green);
-    font-size: 11px;
-    top: 8px;
-  }
+.check-list li::before {
+content: '✓';
+color: var(--green);
+font-size: 11px;
+top: 8px;
+}
 
-  .tier-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 10px;
-  }
+.tier-card {
+background: var(--card-bg);
+border: 1px solid var(--border-subtle);
+border-radius: 12px;
+padding: 20px 24px;
+margin-bottom: 10px;
+}
 
-  .tier-card.premium {
-    border-color: var(--border);
-    background: var(--green-dim);
-  }
+.tier-card.premium {
+border-color: var(--border);
+background: var(--green-dim);
+}
 
-  .tier-label {
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-  }
+.tier-label {
+font-size: 11px;
+font-family: 'DM Mono', monospace;
+font-weight: 500;
+letter-spacing: 0.06em;
+margin-bottom: 8px;
+}
 
-  .tier-label.free { color: var(--text-secondary); }
-  .tier-label.premium { color: var(--green); }
+.tier-label.free { color: var(--text-secondary); }
+.tier-label.premium { color: var(--green); }
 
-  .tier-card h4 {
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
+.tier-card h4 {
+font-size: 15px;
+font-weight: 500;
+margin-bottom: 6px;
+color: var(--text);
+}
 
-  .tier-card p {
-    font-size: 13px;
-    margin: 0;
-  }
+.tier-card p {
+font-size: 13px;
+margin: 0;
+}
 
-  /* CONTACT */
-  .contact-block {
-    background: var(--card-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-  }
+/* CONTACT */
+.contact-block {
+background: var(--card-bg);
+border: 1px solid var(--border-subtle);
+border-radius: 12px;
+padding: 24px;
+text-align: center;
+}
 
-  .contact-block p {
-    margin-bottom: 16px;
-    font-size: 14px;
-  }
+.contact-block p {
+margin-bottom: 16px;
+font-size: 14px;
+}
 
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--green-dim);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 20px;
-    color: var(--green);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: 'DM Mono', monospace;
-    transition: all 0.2s;
-  }
+.contact-link {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: var(--green-dim);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 10px 20px;
+color: var(--green);
+text-decoration: none;
+font-size: 13px;
+font-weight: 500;
+font-family: 'DM Mono', monospace;
+transition: all 0.2s;
+}
 
-  .contact-link:hover {
-    background: rgba(0,200,150,0.2);
-    box-shadow: 0 0 20px var(--green-glow);
-  }
+.contact-link:hover {
+background: rgba(0,200,150,0.2);
+box-shadow: 0 0 20px var(--green-glow);
+}
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border-subtle);
-    padding: 32px 0 48px;
-    margin-top: 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+/* FOOTER */
+footer {
+border-top: 1px solid var(--border-subtle);
+padding: 32px 0 48px;
+margin-top: 64px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+}
 
-  footer p {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin: 0;
-  }
+footer p {
+font-size: 12px;
+color: var(--text-dim);
+margin: 0;
+}
 
-  footer span {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-  }
+footer span {
+font-family: 'DM Mono', monospace;
+font-size: 11px;
+color: var(--text-dim);
+}
 </style>
 </head>
 <body>
 
 <div class="container">
 
-  <header>
-    <div class="logo">
-      <div class="logo-icon">
-        <span>H</span><span>A</span>
-        <span>L</span><span>T</span>
-      </div>
-      <div>
-        <div class="logo-text">HALT Coach</div>
-        <div class="logo-sub">Your AI Recovery Companion</div>
-      </div>
-    </div>
+<header>
+<div class="logo">
+<div class="logo-icon">
+<span>H</span><span>A</span>
+<span>L</span><span>T</span>
+</div>
+<div>
+<div class="logo-text">HALT Coach</div>
+<div class="logo-sub">Your AI Recovery Companion</div>
+</div>
+</div>
 
-    <h1 class="page-title">Privacy <em>Policy</em></h1>
+<h1 class="page-title">Privacy <em>Policy</em></h1>
 
-    <div class="meta-row">
-      <span class="meta-badge green">Effective: June 2026</span>
-      <span class="meta-badge">Version 1.0</span>
-      <span class="meta-badge">GDPR Compliant</span>
-    </div>
-  </header>
+<div class="meta-row">
+<span class="meta-badge green">Effective: October 2026</span>
+<span class="meta-badge">Version 1.1</span>
+<span class="meta-badge">GDPR</span>
+</div>
+</header>
 
-  <!-- LANG TABS -->
-  <div class="lang-tabs" role="tablist">
-    <button class="lang-tab active" onclick="setLang('en')" role="tab" aria-selected="true">EN</button>
-    <button class="lang-tab" onclick="setLang('pl')" role="tab" aria-selected="false">PL</button>
-    <button class="lang-tab" onclick="setLang('de')" role="tab" aria-selected="false">DE</button>
-  </div>
+<!-- LANG TABS -->
+<div class="lang-tabs" role="tablist">
+<button class="lang-tab active" onclick="setLang('en')" role="tab" aria-selected="true">EN</button>
+<button class="lang-tab" onclick="setLang('pl')" role="tab" aria-selected="false">PL</button>
+<button class="lang-tab" onclick="setLang('de')" role="tab" aria-selected="false">DE</button>
+</div>
 
-  <!-- ========== ENGLISH ========== -->
-  <div class="lang-content active" id="lang-en">
+<!-- ========== ENGLISH ========== -->
+<div class="lang-content active" id="lang-en">
 
-    <div class="summary-grid">
-      <div class="summary-card">
-        <div class="summary-icon">🔒</div>
-        <div>
-          <strong>100% Local</strong>
-          <p>All data stays on your device. No servers, no accounts, no cloud.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🚫</div>
-        <div>
-          <strong>No Tracking</strong>
-          <p>No analytics, no ads, no data sold. Ever.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🧠</div>
-        <div>
-          <strong>AI Without Profiling</strong>
-          <p>Claude API processes your sessions — not stores or profiles you.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🗑️</div>
-        <div>
-          <strong>Delete Anytime</strong>
-          <p>Delete the app — all your data is gone. Permanently.</p>
-        </div>
-      </div>
-    </div>
+<div class="summary-grid">
+<div class="summary-card">
+<div class="summary-icon">🔒</div>
+<div>
+<strong>Local-First</strong>
+<p>Your conversation history, check-ins and settings stay on your device. No accounts, no cloud backup.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🚫</div>
+<div>
+<strong>No Tracking</strong>
+<p>No analytics, no ads, no data sold. Ever.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🧠</div>
+<div>
+<strong>AI Without Profiling</strong>
+<p>Your messages are relayed to Anthropic's Claude API to answer you. We do not store or profile them.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🗑️</div>
+<div>
+<strong>Delete Anytime</strong>
+<p>Delete the app to remove your local data, or email us to delete your device record.</p>
+</div>
+</div>
+</div>
 
-    <div class="disclaimer">
-      <div class="disclaimer-label">⚠ IMPORTANT NOTICE</div>
-      <p>HALT Coach is <strong>not a medical device</strong> and does not provide clinical therapy, diagnosis, or treatment. It is a self-help support tool designed to complement — not replace — professional care. If you are experiencing a crisis, please contact emergency services or a mental health crisis line immediately.</p>
-    </div>
+<div class="disclaimer">
+<div class="disclaimer-label">⚠ IMPORTANT NOTICE</div>
+<p>HALT Coach is <strong>not a medical device</strong> and does not provide clinical therapy, diagnosis, or treatment. It is a self-help support tool designed to complement — not replace — professional care. If you are experiencing a crisis, please contact emergency services or a mental health crisis line immediately.</p>
+</div>
 
-    <section>
-      <h2>Who We Are</h2>
-      <p>HALT Coach ("we", "our") is an iOS application designed to support people who have completed addiction recovery programs. The app provides AI-powered coaching conversations to help users maintain their wellbeing after formal treatment.</p>
-      <p><strong>Developer:</strong> Michał Karczewski<br>
-      <strong>Contact:</strong> micha.karczewski@gmail.com</p>
-    </section>
+<section>
+<h2>Who We Are</h2>
+<p>HALT Coach ("we", "our") is an iOS application designed to support people who have completed addiction recovery programs. The app provides AI-powered coaching conversations to help users maintain their wellbeing after formal treatment.</p>
+<p><strong>Developer and data controller:</strong> Michał Karczewski<br>
+<strong>Contact:</strong> haltcoach.app@gmail.com</p>
+</section>
 
-    <section>
-      <h2>What Data We Collect</h2>
+<section>
+<h2>What Data We Process</h2>
 
-      <h3>Data We Collect — None</h3>
-      <div class="card card-green">
-        <p>We, as the developer, collect <strong>no personal data whatsoever</strong>. There are no user accounts, no registration, no analytics, no crash reporting, no advertising identifiers, and no tracking of any kind.</p>
-      </div>
+<h3>No Accounts, No Personal Profile</h3>
+<div class="card card-green">
+<p>HALT Coach has <strong>no user accounts and no registration</strong>. We do not ask for or store your name, e-mail address or phone number. There is no analytics, no crash reporting, no advertising identifier and no tracking of any kind.</p>
+</div>
 
-      <h3>Data Stored Locally on Your Device</h3>
-      <p>The following data is stored exclusively on your iPhone and never transmitted to our servers (we have none):</p>
-      <div class="card">
-        <ul class="check-list">
-          <li>Coaching session conversations and messages</li>
-          <li>HALT check-in results and history</li>
-          <li>Streak and session counters</li>
-          <li>AI memory summaries (if feature is enabled)</li>
-          <li>App preferences and settings</li>
-        </ul>
-      </div>
+<h3>Data Stored Only on Your Device</h3>
+<p>The following data is kept on your iPhone and is not copied to our systems:</p>
+<div class="card">
+<ul class="check-list">
+<li>Coaching session history and messages</li>
+<li>HALT check-in results and history</li>
+<li>Streak and session counters</li>
+<li>AI memory summaries (if the feature is enabled)</li>
+<li>App preferences and settings</li>
+</ul>
+</div>
 
-      <h3>Data Processed by AI (Not Stored by Us)</h3>
-      <div class="card">
-        <p>Your conversation messages are sent to <strong>Anthropic's Claude API</strong> to generate AI responses in real time. This data is processed by Anthropic under their privacy policy. We do not store, access, or log these conversations on any server.</p>
-        <p style="margin-top:10px;font-size:12px;color:var(--text-secondary)">→ Anthropic Privacy Policy: <a href="https://www.anthropic.com/privacy" style="color:var(--green)">anthropic.com/privacy</a></p>
-      </div>
-    </section>
+<h3>Data Sent to Our Service</h3>
+<p>To make the app work, the app communicates with a small backend that we operate on Cloudflare. The following data leaves your device:</p>
+<div class="card">
+<ul>
+<li><strong>Your messages for the AI coach</strong> (and, if you enabled AI memory, the memory summary used as context) are relayed in real time through our backend to Anthropic's Claude API to generate a reply. We do not store, read or log the content of your conversations.</li>
+<li><strong>An anonymous device identifier</strong> (not linked to your name or e-mail) used to count free-plan sessions and prevent abuse. It is stored on our Cloudflare backend together with usage counters.</li>
+<li><strong>Your App Store subscription receipt</strong>, sent when you restore a purchase so that we can verify with Apple whether you have an active Premium subscription. We never see or store your payment details; payments are handled entirely by Apple.</li>
+</ul>
+</div>
 
-    <section>
-      <h2>Subscription Plans & Data</h2>
+<h3>Data Processed by Our Providers</h3>
+<div class="card">
+<p><strong>Anthropic</strong> processes the messages sent to its Claude API under its own privacy policy. <strong>Cloudflare</strong> hosts our backend and processes technical connection data (such as IP address) needed to deliver requests. <strong>Apple</strong> processes subscriptions and purchases.</p>
+<p style="margin-top:10px;font-size:12px;color:var(--text-secondary)">→ Anthropic Privacy Policy: <a href="https://www.anthropic.com/privacy" style="color:var(--green)">anthropic.com/privacy</a></p>
+</div>
 
-      <div class="tier-card">
-        <div class="tier-label free">FREE PLAN</div>
-        <h4>Limited Access</h4>
-        <p>3 sessions per week. First 14 days powered by Claude Sonnet; thereafter by Claude Haiku. No account required. All data is strictly local.</p>
-      </div>
+<h3>Voice AI (Premium)</h3>
+<div class="card">
+<p>If you use Voice AI, your speech is transcribed using Apple's speech recognition. Depending on your device and language, Apple may process the audio on its servers, in line with Apple's privacy policy. HALT Coach does not record or store your audio; only the transcribed text is sent to the AI as a message.</p>
+</div>
+</section>
 
-      <div class="tier-card premium">
-        <div class="tier-label premium">PREMIUM · $29.99/month</div>
-        <h4>Full Access</h4>
-        <p>Unlimited coaching sessions (Standard, Deep, Open Coach), Voice AI via Apple's on-device frameworks, Craving SOS 24/7, HALT trend charts, and AI memory — all powered by Claude Sonnet. All data remains local to your device.</p>
-      </div>
-    </section>
+<section>
+<h2>Why We Process Data & Legal Basis</h2>
+<p>We process the data above only to run the app: to deliver AI replies, to enforce plan limits, and to verify subscriptions. The legal basis is performance of the contract with you (Art. 6(1)(b) GDPR) and our legitimate interest in preventing abuse (Art. 6(1)(f) GDPR). Messages you write may contain information about your health; by choosing to write them in a session you ask us to process them for the purpose of generating your reply (Art. 9(2)(a) GDPR).</p>
+<p>Some of our providers are located outside the European Economic Area, for example in the United States. They rely on appropriate safeguards such as Standard Contractual Clauses.</p>
+</section>
 
-    <section>
-      <h2>No Third-Party Tracking</h2>
-      <p>HALT Coach contains <strong>no analytics SDKs, no advertising frameworks, no crash reporting tools, and no social media integrations</strong>. The only external connection the app makes is to the Anthropic API for AI responses and to Apple's servers for subscription management.</p>
-    </section>
+<section>
+<h2>Subscription Plans & Data</h2>
 
-    <section>
-      <h2>Your Rights & Controls</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Access:</strong> All your data is stored locally — open the app to access it anytime.</li>
-          <li><strong>Delete sessions:</strong> Swipe left on any session to delete it permanently.</li>
-          <li><strong>Delete all data:</strong> Delete the app from your iPhone — all local data is permanently removed.</li>
-          <li><strong>Cancel subscription:</strong> Cancel anytime via App Store → Account → Subscriptions.</li>
-          <li><strong>GDPR / data requests:</strong> Contact us at micha.karczewski@gmail.com</li>
-        </ul>
-      </div>
-    </section>
+<div class="tier-card">
+<div class="tier-label free">FREE PLAN</div>
+<h4>Limited Access</h4>
+<p>3 sessions per week and Craving SOS up to 5 times per month. First 14 days powered by Claude Sonnet; thereafter by Claude Haiku. No account required. Your conversation history stays on your device.</p>
+</div>
 
-    <section>
-      <h2>Children's Privacy</h2>
-      <p>HALT Coach is intended for users aged 18 and older. We do not knowingly collect any data from minors. The app's content is designed exclusively for adults in post-treatment recovery.</p>
-    </section>
+<div class="tier-card premium">
+<div class="tier-label premium">PREMIUM · $29.99/month</div>
+<h4>Full Access</h4>
+<p>Unlimited coaching sessions (Standard, Deep, Open Coach), Voice AI, Craving SOS 24/7, HALT trend charts and AI memory — all powered by Claude Sonnet. Your conversation history stays on your device.</p>
+</div>
+</section>
 
-    <section>
-      <h2>Contact</h2>
-      <div class="contact-block">
-        <p>Questions about this policy or your data? Reach out directly.</p>
-        <a href="mailto:micha.karczewski@gmail.com" class="contact-link">
-          ✉ micha.karczewski@gmail.com
-        </a>
-      </div>
-    </section>
+<section>
+<h2>No Third-Party Tracking</h2>
+<p>HALT Coach contains <strong>no analytics SDKs, no advertising frameworks, no crash reporting tools, and no social media integrations</strong>. The only external connections the app makes are to our backend on Cloudflare (which relays requests to the Anthropic API) and to Apple for subscriptions and speech recognition. We do not sell your data and do not use it for advertising.</p>
+</section>
 
-  </div>
+<section>
+<h2>Retention</h2>
+<p>Conversations and check-ins stay on your device until you delete them or delete the app. The anonymous device record on our backend (device identifier and usage counters) is kept for as long as needed to operate the plan limits and prevent abuse, and can be deleted on request.</p>
+</section>
 
-  <!-- ========== POLISH ========== -->
-  <div class="lang-content" id="lang-pl">
+<section>
+<h2>Your Rights & Controls</h2>
+<div class="card">
+<ul>
+<li><strong>Access:</strong> Your history is stored locally — open the app to see it anytime.</li>
+<li><strong>Delete sessions:</strong> Swipe left on any session to delete it permanently.</li>
+<li><strong>Delete local data:</strong> Delete the app from your iPhone — all local data is permanently removed.</li>
+<li><strong>Delete server record:</strong> Email us and we will delete the anonymous device record connected to your device, where we can identify it.</li>
+<li><strong>Cancel subscription:</strong> Cancel anytime via App Store → Account → Subscriptions.</li>
+<li><strong>GDPR rights:</strong> You have the right to access, rectify, erase, restrict and object to processing, and to lodge a complaint with your data protection authority (in Poland: UODO). Contact us at haltcoach.app@gmail.com</li>
+</ul>
+</div>
+</section>
 
-    <div class="summary-grid">
-      <div class="summary-card">
-        <div class="summary-icon">🔒</div>
-        <div>
-          <strong>100% Lokalnie</strong>
-          <p>Wszystkie dane zostają na Twoim urządzeniu. Żadnych serwerów, kont ani chmury.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🚫</div>
-        <div>
-          <strong>Zero Śledzenia</strong>
-          <p>Żadnej analityki, reklam ani sprzedaży danych. Nigdy.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🧠</div>
-        <div>
-          <strong>AI Bez Profilowania</strong>
-          <p>Claude API przetwarza Twoje sesje — nie przechowuje ich ani Cię nie profiluje.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🗑️</div>
-        <div>
-          <strong>Usuń w Każdej Chwili</strong>
-          <p>Usuń aplikację — wszystkie Twoje dane znikają. Trwale.</p>
-        </div>
-      </div>
-    </div>
+<section>
+<h2>Children's Privacy</h2>
+<p>HALT Coach is intended for users aged 18 and older. We do not knowingly collect any data from minors. The app's content is designed exclusively for adults in post-treatment recovery.</p>
+</section>
 
-    <div class="disclaimer">
-      <div class="disclaimer-label">⚠ WAŻNA INFORMACJA</div>
-      <p>HALT Coach <strong>nie jest urządzeniem medycznym</strong> i nie świadczy terapii klinicznej, diagnozy ani leczenia. Jest to narzędzie wsparcia zaprojektowane jako uzupełnienie — nie zastępnik — profesjonalnej opieki. W sytuacji kryzysowej skontaktuj się natychmiast ze służbami ratunkowymi lub telefonem zaufania.</p>
-    </div>
+<section>
+<h2>Changes to This Policy</h2>
+<p>If we change how the app handles data, we will update this page and the effective date above.</p>
+</section>
 
-    <section>
-      <h2>Kim Jesteśmy</h2>
-      <p>HALT Coach to aplikacja iOS zaprojektowana dla osób, które ukończyły programy terapii uzależnień. Aplikacja oferuje rozmowy coachingowe wspierane przez AI, pomagając użytkownikom utrzymać dobrostan po zakończeniu formalnego leczenia.</p>
-      <p><strong>Deweloper:</strong> Michał Karczewski<br>
-      <strong>Kontakt:</strong> micha.karczewski@gmail.com</p>
-    </section>
+<section>
+<h2>Contact</h2>
+<div class="contact-block">
+<p>Questions about this policy or your data? Reach out directly.</p>
+<a href="mailto:haltcoach.app@gmail.com" class="contact-link">
+✉ haltcoach.app@gmail.com
+</a>
+</div>
+</section>
 
-    <section>
-      <h2>Jakie Dane Zbieramy</h2>
+</div>
 
-      <h3>Dane Które Zbieramy — Żadnych</h3>
-      <div class="card card-green">
-        <p>My, jako deweloper, <strong>nie zbieramy żadnych danych osobowych</strong>. Nie ma kont użytkowników, rejestracji, analityki, raportowania błędów, identyfikatorów reklamowych ani śledzenia jakiegokolwiek rodzaju.</p>
-      </div>
+<!-- ========== POLISH ========== -->
+<div class="lang-content" id="lang-pl">
 
-      <h3>Dane Przechowywane Lokalnie na Twoim Urządzeniu</h3>
-      <p>Poniższe dane są przechowywane wyłącznie na Twoim iPhonie i nigdy nie są przesyłane na nasze serwery (których nie posiadamy):</p>
-      <div class="card">
-        <ul class="check-list">
-          <li>Rozmowy z sesji coachingowych i wiadomości</li>
-          <li>Wyniki i historia check-inów HALT</li>
-          <li>Liczniki serii i sesji</li>
-          <li>Podsumowania pamięci AI (jeśli funkcja jest włączona)</li>
-          <li>Preferencje i ustawienia aplikacji</li>
-        </ul>
-      </div>
+<div class="summary-grid">
+<div class="summary-card">
+<div class="summary-icon">🔒</div>
+<div>
+<strong>Lokalnie w Pierwszej Kolejności</strong>
+<p>Historia rozmów, check-iny i ustawienia zostają na Twoim urządzeniu. Bez kont i kopii w chmurze.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🚫</div>
+<div>
+<strong>Zero Śledzenia</strong>
+<p>Żadnej analityki, reklam ani sprzedaży danych. Nigdy.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🧠</div>
+<div>
+<strong>AI Bez Profilowania</strong>
+<p>Twoje wiadomości są przekazywane do Claude API firmy Anthropic, aby uzyskać odpowiedź. Nie przechowujemy ich ani nie profilujemy.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🗑️</div>
+<div>
+<strong>Usuń w Każdej Chwili</strong>
+<p>Usuń aplikację, aby skasować dane lokalne, lub napisz do nas, aby usunąć rekord urządzenia.</p>
+</div>
+</div>
+</div>
 
-      <h3>Dane Przetwarzane przez AI (Nie Przez Nas)</h3>
-      <div class="card">
-        <p>Wiadomości z rozmów są wysyłane do <strong>Claude API firmy Anthropic</strong> w celu generowania odpowiedzi AI w czasie rzeczywistym. Dane te są przetwarzane przez Anthropic zgodnie z ich polityką prywatności. Nie przechowujemy, nie uzyskujemy dostępu ani nie rejestrujemy tych rozmów na żadnym serwerze.</p>
-        <p style="margin-top:10px;font-size:12px;color:var(--text-secondary)">→ Polityka prywatności Anthropic: <a href="https://www.anthropic.com/privacy" style="color:var(--green)">anthropic.com/privacy</a></p>
-      </div>
-    </section>
+<div class="disclaimer">
+<div class="disclaimer-label">⚠ WAŻNA INFORMACJA</div>
+<p>HALT Coach <strong>nie jest urządzeniem medycznym</strong> i nie świadczy terapii klinicznej, diagnozy ani leczenia. Jest to narzędzie wsparcia zaprojektowane jako uzupełnienie — nie zastępnik — profesjonalnej opieki. W sytuacji kryzysowej skontaktuj się natychmiast ze służbami ratunkowymi lub telefonem zaufania.</p>
+</div>
 
-    <section>
-      <h2>Plany Subskrypcji i Dane</h2>
+<section>
+<h2>Kim Jesteśmy</h2>
+<p>HALT Coach to aplikacja iOS zaprojektowana dla osób, które ukończyły programy terapii uzależnień. Aplikacja oferuje rozmowy coachingowe wspierane przez AI, pomagając użytkownikom utrzymać dobrostan po zakończeniu formalnego leczenia.</p>
+<p><strong>Deweloper i administrator danych:</strong> Michał Karczewski<br>
+<strong>Kontakt:</strong> haltcoach.app@gmail.com</p>
+</section>
 
-      <div class="tier-card">
-        <div class="tier-label free">PLAN BEZPŁATNY</div>
-        <h4>Ograniczony Dostęp</h4>
-        <p>3 sesje tygodniowo. Pierwsze 14 dni obsługiwane przez Claude Sonnet; następnie przez Claude Haiku. Konto nie jest wymagane. Wszystkie dane są ściśle lokalne.</p>
-      </div>
+<section>
+<h2>Jakie Dane Przetwarzamy</h2>
 
-      <div class="tier-card premium">
-        <div class="tier-label premium">PREMIUM · $29.99/miesiąc</div>
-        <h4>Pełny Dostęp</h4>
-        <p>Nieograniczone sesje coachingowe (Standardowa, Deep, Open Coach), Voice AI przez lokalne frameworki Apple, Craving SOS 24/7, wykresy HALT i pamięć AI — wszystko obsługiwane przez Claude Sonnet. Wszystkie dane pozostają lokalne na Twoim urządzeniu.</p>
-      </div>
-    </section>
+<h3>Bez Kont i Bez Profilu Osobowego</h3>
+<div class="card card-green">
+<p>HALT Coach <strong>nie ma kont użytkowników ani rejestracji</strong>. Nie prosimy o imię, adres e-mail ani numer telefonu i ich nie przechowujemy. Nie ma analityki, raportowania błędów, identyfikatorów reklamowych ani śledzenia jakiegokolwiek rodzaju.</p>
+</div>
 
-    <section>
-      <h2>Żadnego Śledzenia przez Strony Trzecie</h2>
-      <p>HALT Coach nie zawiera <strong>żadnych SDK analitycznych, frameworków reklamowych, narzędzi do raportowania błędów ani integracji z mediami społecznościowymi</strong>. Jedyne zewnętrzne połączenia aplikacji to Anthropic API dla odpowiedzi AI oraz serwery Apple dla zarządzania subskrypcją.</p>
-    </section>
+<h3>Dane Przechowywane Wyłącznie na Twoim Urządzeniu</h3>
+<p>Poniższe dane są przechowywane na Twoim iPhonie i nie są kopiowane do naszych systemów:</p>
+<div class="card">
+<ul class="check-list">
+<li>Historia sesji coachingowych i wiadomości</li>
+<li>Wyniki i historia check-inów HALT</li>
+<li>Liczniki serii i sesji</li>
+<li>Podsumowania pamięci AI (jeśli funkcja jest włączona)</li>
+<li>Preferencje i ustawienia aplikacji</li>
+</ul>
+</div>
 
-    <section>
-      <h2>Twoje Prawa i Kontrola</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Dostęp:</strong> Wszystkie Twoje dane są przechowywane lokalnie — otwórz aplikację, aby uzyskać do nich dostęp w dowolnym momencie.</li>
-          <li><strong>Usuń sesje:</strong> Przesuń w lewo dowolną sesję, aby ją trwale usunąć.</li>
-          <li><strong>Usuń wszystkie dane:</strong> Usuń aplikację z iPhone'a — wszystkie dane lokalne są trwale usuwane.</li>
-          <li><strong>Anuluj subskrypcję:</strong> Anuluj w dowolnym momencie przez App Store → Konto → Subskrypcje.</li>
-          <li><strong>RODO / żądania danych:</strong> Skontaktuj się z nami pod adresem micha.karczewski@gmail.com</li>
-        </ul>
-      </div>
-    </section>
+<h3>Dane Wysyłane do Naszej Usługi</h3>
+<p>Aby aplikacja działała, komunikuje się z niewielkim systemem (backendem), który prowadzimy w Cloudflare. Z Twojego urządzenia wychodzą następujące dane:</p>
+<div class="card">
+<ul>
+<li><strong>Twoje wiadomości do coacha AI</strong> (oraz, jeśli włączysz pamięć AI, podsumowanie pamięci używane jako kontekst) są na bieżąco przekazywane przez nasz backend do Claude API firmy Anthropic w celu wygenerowania odpowiedzi. Nie przechowujemy, nie czytamy ani nie rejestrujemy treści Twoich rozmów.</li>
+<li><strong>Anonimowy identyfikator urządzenia</strong> (niepowiązany z Twoim imieniem ani e-mailem) służy do liczenia sesji w planie bezpłatnym i zapobiegania nadużyciom. Jest przechowywany w naszym backendzie w Cloudflare razem z licznikami użycia.</li>
+<li><strong>Potwierdzenie zakupu subskrypcji z App Store</strong> jest wysyłane przy przywracaniu zakupów, abyśmy mogli sprawdzić w Apple, czy masz aktywną subskrypcję Premium. Nigdy nie widzimy ani nie przechowujemy danych płatniczych — płatności obsługuje wyłącznie Apple.</li>
+</ul>
+</div>
 
-    <section>
-      <h2>Prywatność Dzieci</h2>
-      <p>HALT Coach jest przeznaczony dla użytkowników w wieku 18 lat i starszych. Nie zbieramy świadomie żadnych danych od osób niepełnoletnich. Treść aplikacji jest zaprojektowana wyłącznie dla dorosłych w fazie po zakończeniu leczenia.</p>
-    </section>
+<h3>Dane Przetwarzane przez Naszych Dostawców</h3>
+<div class="card">
+<p><strong>Anthropic</strong> przetwarza wiadomości wysyłane do swojego Claude API zgodnie z własną polityką prywatności. <strong>Cloudflare</strong> hostuje nasz backend i przetwarza techniczne dane połączenia (np. adres IP) niezbędne do dostarczenia żądań. <strong>Apple</strong> obsługuje subskrypcje i zakupy.</p>
+<p style="margin-top:10px;font-size:12px;color:var(--text-secondary)">→ Polityka prywatności Anthropic: <a href="https://www.anthropic.com/privacy" style="color:var(--green)">anthropic.com/privacy</a></p>
+</div>
 
-    <section>
-      <h2>Kontakt</h2>
-      <div class="contact-block">
-        <p>Masz pytania dotyczące tej polityki lub swoich danych? Napisz bezpośrednio.</p>
-        <a href="mailto:micha.karczewski@gmail.com" class="contact-link">
-          ✉ micha.karczewski@gmail.com
-        </a>
-      </div>
-    </section>
+<h3>Voice AI (Premium)</h3>
+<div class="card">
+<p>Jeśli korzystasz z Voice AI, Twoja mowa jest zamieniana na tekst przez rozpoznawanie mowy Apple. W zależności od urządzenia i języka Apple może przetwarzać dźwięk na swoich serwerach, zgodnie z polityką prywatności Apple. HALT Coach nie nagrywa ani nie przechowuje Twojego dźwięku; do AI jest wysyłany wyłącznie transkrybowany tekst jako wiadomość.</p>
+</div>
+</section>
 
-  </div>
+<section>
+<h2>Cel Przetwarzania i Podstawa Prawna</h2>
+<p>Powyższe dane przetwarzamy wyłącznie w celu działania aplikacji: dostarczania odpowiedzi AI, egzekwowania limitów planu i weryfikacji subskrypcji. Podstawą prawną jest wykonanie umowy z Tobą (art. 6 ust. 1 lit. b RODO) oraz nasz prawnie uzasadniony interes w zapobieganiu nadużyciom (art. 6 ust. 1 lit. f RODO). Wiadomości, które piszesz, mogą zawierać informacje o Twoim zdrowiu; pisząc je w sesji, prosisz nas o ich przetworzenie w celu wygenerowania odpowiedzi (art. 9 ust. 2 lit. a RODO).</p>
+<p>Niektórzy nasi dostawcy znajdują się poza Europejskim Obszarem Gospodarczym, np. w Stanach Zjednoczonych. Stosują odpowiednie zabezpieczenia, takie jak standardowe klauzule umowne.</p>
+</section>
 
-  <!-- ========== GERMAN ========== -->
-  <div class="lang-content" id="lang-de">
+<section>
+<h2>Plany Subskrypcji i Dane</h2>
 
-    <div class="summary-grid">
-      <div class="summary-card">
-        <div class="summary-icon">🔒</div>
-        <div>
-          <strong>100% Lokal</strong>
-          <p>Alle Daten bleiben auf deinem Gerät. Keine Server, keine Konten, keine Cloud.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🚫</div>
-        <div>
-          <strong>Kein Tracking</strong>
-          <p>Keine Analyse, keine Werbung, keine Datenweitergabe. Niemals.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🧠</div>
-        <div>
-          <strong>KI Ohne Profiling</strong>
-          <p>Claude API verarbeitet deine Sitzungen — speichert sie nicht und erstellt kein Profil.</p>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-icon">🗑️</div>
-        <div>
-          <strong>Jederzeit Löschen</strong>
-          <p>App löschen — alle deine Daten sind dauerhaft weg.</p>
-        </div>
-      </div>
-    </div>
+<div class="tier-card">
+<div class="tier-label free">PLAN BEZPŁATNY</div>
+<h4>Ograniczony Dostęp</h4>
+<p>3 sesje tygodniowo i Craving SOS do 5 razy w miesiącu. Pierwsze 14 dni obsługiwane przez Claude Sonnet; następnie przez Claude Haiku. Konto nie jest wymagane. Historia rozmów pozostaje na Twoim urządzeniu.</p>
+</div>
 
-    <div class="disclaimer">
-      <div class="disclaimer-label">⚠ WICHTIGER HINWEIS</div>
-      <p>HALT Coach ist <strong>kein Medizinprodukt</strong> und bietet keine klinische Therapie, Diagnose oder Behandlung. Es ist ein Selbsthilfe-Tool als Ergänzung — kein Ersatz — für professionelle Betreuung. In einer Krisensituation wende dich sofort an den Notruf oder eine Krisenhotline.</p>
-    </div>
+<div class="tier-card premium">
+<div class="tier-label premium">PREMIUM · $29.99/miesiąc</div>
+<h4>Pełny Dostęp</h4>
+<p>Nieograniczone sesje coachingowe (Standardowa, Deep, Open Coach), Voice AI, Craving SOS 24/7, wykresy HALT i pamięć AI — wszystko obsługiwane przez Claude Sonnet. Historia rozmów pozostaje na Twoim urządzeniu.</p>
+</div>
+</section>
 
-    <section>
-      <h2>Wer Wir Sind</h2>
-      <p>HALT Coach ist eine iOS-App für Menschen, die Suchtbehandlungsprogramme abgeschlossen haben. Die App bietet KI-gestützte Coaching-Gespräche, um Nutzern zu helfen, ihr Wohlbefinden nach der formalen Behandlung aufrechtzuerhalten.</p>
-      <p><strong>Entwickler:</strong> Michał Karczewski<br>
-      <strong>Kontakt:</strong> micha.karczewski@gmail.com</p>
-    </section>
+<section>
+<h2>Żadnego Śledzenia przez Strony Trzecie</h2>
+<p>HALT Coach nie zawiera <strong>żadnych SDK analitycznych, frameworków reklamowych, narzędzi do raportowania błędów ani integracji z mediami społecznościowymi</strong>. Jedyne zewnętrzne połączenia aplikacji to nasz backend w Cloudflare (który przekazuje żądania do Anthropic API) oraz Apple — dla subskrypcji i rozpoznawania mowy. Nie sprzedajemy Twoich danych i nie używamy ich do reklam.</p>
+</section>
 
-    <section>
-      <h2>Welche Daten Wir Erheben</h2>
+<section>
+<h2>Okres Przechowywania</h2>
+<p>Rozmowy i check-iny pozostają na Twoim urządzeniu, dopóki ich nie usuniesz lub nie usuniesz aplikacji. Anonimowy rekord urządzenia w naszym backendzie (identyfikator urządzenia i liczniki użycia) jest przechowywany tak długo, jak jest to potrzebne do egzekwowania limitów planu i zapobiegania nadużyciom, i może zostać usunięty na Twoją prośbę.</p>
+</section>
 
-      <h3>Erhobene Daten — Keine</h3>
-      <div class="card card-green">
-        <p>Wir als Entwickler erheben <strong>keinerlei personenbezogene Daten</strong>. Es gibt keine Benutzerkonten, keine Registrierung, keine Analysen, keine Absturzberichte, keine Werbe-IDs und keinerlei Tracking.</p>
-      </div>
+<section>
+<h2>Twoje Prawa i Kontrola</h2>
+<div class="card">
+<ul>
+<li><strong>Dostęp:</strong> Historia jest przechowywana lokalnie — otwórz aplikację, aby ją zobaczyć w dowolnym momencie.</li>
+<li><strong>Usuń sesje:</strong> Przesuń w lewo dowolną sesję, aby ją trwale usunąć.</li>
+<li><strong>Usuń dane lokalne:</strong> Usuń aplikację z iPhone'a — wszystkie dane lokalne są trwale usuwane.</li>
+<li><strong>Usuń rekord z serwera:</strong> Napisz do nas, a usuniemy anonimowy rekord powiązany z Twoim urządzeniem, o ile będziemy w stanie go zidentyfikować.</li>
+<li><strong>Anuluj subskrypcję:</strong> Anuluj w dowolnym momencie przez App Store → Konto → Subskrypcje.</li>
+<li><strong>Prawa wynikające z RODO:</strong> Masz prawo dostępu, sprostowania, usunięcia, ograniczenia przetwarzania i sprzeciwu oraz prawo wniesienia skargi do organu ochrony danych (w Polsce: UODO). Kontakt: haltcoach.app@gmail.com</li>
+</ul>
+</div>
+</section>
 
-      <h3>Lokal auf Deinem Gerät Gespeicherte Daten</h3>
-      <p>Folgende Daten werden ausschließlich auf deinem iPhone gespeichert und niemals an unsere Server übertragen (die wir nicht besitzen):</p>
-      <div class="card">
-        <ul class="check-list">
-          <li>Coaching-Sitzungsgespräche und Nachrichten</li>
-          <li>HALT-Check-in-Ergebnisse und -Verlauf</li>
-          <li>Streak- und Sitzungszähler</li>
-          <li>KI-Gedächtniszusammenfassungen (falls aktiviert)</li>
-          <li>App-Einstellungen und Präferenzen</li>
-        </ul>
-      </div>
+<section>
+<h2>Prywatność Dzieci</h2>
+<p>HALT Coach jest przeznaczony dla użytkowników w wieku 18 lat i starszych. Nie zbieramy świadomie żadnych danych od osób niepełnoletnich. Treść aplikacji jest zaprojektowana wyłącznie dla dorosłych w fazie po zakończeniu leczenia.</p>
+</section>
 
-      <h3>Von KI Verarbeitete Daten (Nicht Von Uns)</h3>
-      <div class="card">
-        <p>Deine Gesprächsnachrichten werden an die <strong>Claude API von Anthropic</strong> gesendet, um KI-Antworten in Echtzeit zu generieren. Diese Daten werden von Anthropic gemäß ihrer Datenschutzrichtlinie verarbeitet. Wir speichern, greifen nicht auf diese Gespräche zu und protokollieren sie nicht auf einem Server.</p>
-        <p style="margin-top:10px;font-size:12px;color:var(--text-secondary)">→ Datenschutzerklärung von Anthropic: <a href="https://www.anthropic.com/privacy" style="color:var(--green)">anthropic.com/privacy</a></p>
-      </div>
-    </section>
+<section>
+<h2>Zmiany Polityki</h2>
+<p>Jeśli zmienimy sposób, w jaki aplikacja przetwarza dane, zaktualizujemy tę stronę oraz datę obowiązywania podaną powyżej.</p>
+</section>
 
-    <section>
-      <h2>Abonnementpläne & Daten</h2>
+<section>
+<h2>Kontakt</h2>
+<div class="contact-block">
+<p>Masz pytania dotyczące tej polityki lub swoich danych? Napisz bezpośrednio.</p>
+<a href="mailto:haltcoach.app@gmail.com" class="contact-link">
+✉ haltcoach.app@gmail.com
+</a>
+</div>
+</section>
 
-      <div class="tier-card">
-        <div class="tier-label free">KOSTENLOSER PLAN</div>
-        <h4>Eingeschränkter Zugang</h4>
-        <p>3 Sitzungen pro Woche. Die ersten 14 Tage werden von Claude Sonnet betrieben; danach von Claude Haiku. Kein Konto erforderlich. Alle Daten sind strikt lokal.</p>
-      </div>
+</div>
 
-      <div class="tier-card premium">
-        <div class="tier-label premium">PREMIUM · $29,99/Monat</div>
-        <h4>Vollzugang</h4>
-        <p>Unbegrenzte Coaching-Sitzungen (Standard, Deep, Open Coach), Voice AI über Apples On-Device-Frameworks, Craving SOS 24/7, HALT-Trenddiagramme und KI-Gedächtnis — alles betrieben von Claude Sonnet. Alle Daten bleiben lokal auf deinem Gerät.</p>
-      </div>
-    </section>
+<!-- ========== GERMAN ========== -->
+<div class="lang-content" id="lang-de">
 
-    <section>
-      <h2>Kein Drittanbieter-Tracking</h2>
-      <p>HALT Coach enthält <strong>keine Analyse-SDKs, keine Werbe-Frameworks, keine Absturzmelde-Tools und keine Social-Media-Integrationen</strong>. Die einzigen externen Verbindungen der App sind die Anthropic API für KI-Antworten und Apple-Server für die Abonnementverwaltung.</p>
-    </section>
+<div class="summary-grid">
+<div class="summary-card">
+<div class="summary-icon">🔒</div>
+<div>
+<strong>Lokal zuerst</strong>
+<p>Gesprächsverlauf, Check-ins und Einstellungen bleiben auf deinem Gerät. Keine Konten, kein Cloud-Backup.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🚫</div>
+<div>
+<strong>Kein Tracking</strong>
+<p>Keine Analyse, keine Werbung, keine Datenweitergabe. Niemals.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🧠</div>
+<div>
+<strong>KI Ohne Profiling</strong>
+<p>Deine Nachrichten werden zur Beantwortung an die Claude API von Anthropic weitergeleitet. Wir speichern sie nicht und erstellen kein Profil.</p>
+</div>
+</div>
+<div class="summary-card">
+<div class="summary-icon">🗑️</div>
+<div>
+<strong>Jederzeit Löschen</strong>
+<p>App löschen, um lokale Daten zu entfernen, oder uns schreiben, um den Geräte-Eintrag zu löschen.</p>
+</div>
+</div>
+</div>
 
-    <section>
-      <h2>Deine Rechte & Kontrolle</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Zugriff:</strong> Alle deine Daten sind lokal gespeichert — öffne die App, um jederzeit darauf zuzugreifen.</li>
-          <li><strong>Sitzungen löschen:</strong> Wische eine Sitzung nach links, um sie dauerhaft zu löschen.</li>
-          <li><strong>Alle Daten löschen:</strong> Lösche die App vom iPhone — alle lokalen Daten werden dauerhaft entfernt.</li>
-          <li><strong>Abonnement kündigen:</strong> Jederzeit über App Store → Konto → Abonnements kündbar.</li>
-          <li><strong>DSGVO / Datenanfragen:</strong> Kontaktiere uns unter micha.karczewski@gmail.com</li>
-        </ul>
-      </div>
-    </section>
+<div class="disclaimer">
+<div class="disclaimer-label">⚠ WICHTIGER HINWEIS</div>
+<p>HALT Coach ist <strong>kein Medizinprodukt</strong> und bietet keine klinische Therapie, Diagnose oder Behandlung. Es ist ein Selbsthilfe-Tool als Ergänzung — kein Ersatz — für professionelle Betreuung. In einer Krisensituation wende dich sofort an den Notruf oder eine Krisenhotline.</p>
+</div>
 
-    <section>
-      <h2>Datenschutz für Kinder</h2>
-      <p>HALT Coach richtet sich an Nutzer ab 18 Jahren. Wir erheben wissentlich keine Daten von Minderjährigen. Die App-Inhalte sind ausschließlich für Erwachsene in der Nachbehandlungsphase konzipiert.</p>
-    </section>
+<section>
+<h2>Wer Wir Sind</h2>
+<p>HALT Coach ist eine iOS-App für Menschen, die Suchtbehandlungsprogramme abgeschlossen haben. Die App bietet KI-gestützte Coaching-Gespräche, um Nutzern zu helfen, ihr Wohlbefinden nach der formalen Behandlung aufrechtzuerhalten.</p>
+<p><strong>Entwickler und Verantwortlicher:</strong> Michał Karczewski<br>
+<strong>Kontakt:</strong> haltcoach.app@gmail.com</p>
+</section>
 
-    <section>
-      <h2>Kontakt</h2>
-      <div class="contact-block">
-        <p>Fragen zu dieser Richtlinie oder deinen Daten? Schreib uns direkt.</p>
-        <a href="mailto:micha.karczewski@gmail.com" class="contact-link">
-          ✉ micha.karczewski@gmail.com
-        </a>
-      </div>
-    </section>
+<section>
+<h2>Welche Daten Wir Verarbeiten</h2>
 
-  </div>
+<h3>Keine Konten, Kein Persönliches Profil</h3>
+<div class="card card-green">
+<p>HALT Coach hat <strong>keine Benutzerkonten und keine Registrierung</strong>. Wir fragen weder nach deinem Namen, deiner E-Mail-Adresse noch deiner Telefonnummer und speichern sie nicht. Es gibt keine Analysen, keine Absturzberichte, keine Werbe-IDs und keinerlei Tracking.</p>
+</div>
 
-  <footer>
-    <p>© 2026 HALT Coach · Michał Karczewski · Privacy by Design</p>
-    <span>v1.0 · June 2026</span>
-  </footer>
+<h3>Nur auf Deinem Gerät Gespeicherte Daten</h3>
+<p>Folgende Daten werden auf deinem iPhone gespeichert und nicht in unsere Systeme kopiert:</p>
+<div class="card">
+<ul class="check-list">
+<li>Coaching-Sitzungsverlauf und Nachrichten</li>
+<li>HALT-Check-in-Ergebnisse und -Verlauf</li>
+<li>Streak- und Sitzungszähler</li>
+<li>KI-Gedächtniszusammenfassungen (falls aktiviert)</li>
+<li>App-Einstellungen und Präferenzen</li>
+</ul>
+</div>
+
+<h3>An Unseren Dienst Gesendete Daten</h3>
+<p>Damit die App funktioniert, kommuniziert sie mit einem kleinen Backend, das wir bei Cloudflare betreiben. Folgende Daten verlassen dein Gerät:</p>
+<div class="card">
+<ul>
+<li><strong>Deine Nachrichten an den KI-Coach</strong> (und, wenn du das KI-Gedächtnis aktiviert hast, die als Kontext genutzte Gedächtniszusammenfassung) werden in Echtzeit über unser Backend an die Claude API von Anthropic weitergeleitet, um eine Antwort zu erzeugen. Wir speichern, lesen oder protokollieren den Inhalt deiner Gespräche nicht.</li>
+<li><strong>Eine anonyme Geräte-ID</strong> (nicht mit deinem Namen oder deiner E-Mail verknüpft) dient dazu, Sitzungen im kostenlosen Plan zu zählen und Missbrauch zu verhindern. Sie wird zusammen mit Nutzungszählern in unserem Cloudflare-Backend gespeichert.</li>
+<li><strong>Dein App-Store-Abonnementbeleg</strong> wird beim Wiederherstellen von Käufen gesendet, damit wir bei Apple prüfen können, ob ein aktives Premium-Abonnement besteht. Zahlungsdaten sehen oder speichern wir nie; Zahlungen werden vollständig von Apple abgewickelt.</li>
+</ul>
+</div>
+
+<h3>Von Unseren Dienstleistern Verarbeitete Daten</h3>
+<div class="card">
+<p><strong>Anthropic</strong> verarbeitet die an die Claude API gesendeten Nachrichten gemäß der eigenen Datenschutzrichtlinie. <strong>Cloudflare</strong> hostet unser Backend und verarbeitet technische Verbindungsdaten (z. B. die IP-Adresse), die zur Zustellung der Anfragen nötig sind. <strong>Apple</strong> verarbeitet Abonnements und Käufe.</p>
+<p style="margin-top:10px;font-size:12px;color:var(--text-secondary)">→ Datenschutzerklärung von Anthropic: <a href="https://www.anthropic.com/privacy" style="color:var(--green)">anthropic.com/privacy</a></p>
+</div>
+
+<h3>Voice AI (Premium)</h3>
+<div class="card">
+<p>Wenn du Voice AI nutzt, wird deine Sprache mit der Spracherkennung von Apple transkribiert. Je nach Gerät und Sprache kann Apple die Audiodaten auf seinen Servern verarbeiten, gemäß der Datenschutzrichtlinie von Apple. HALT Coach nimmt dein Audio nicht auf und speichert es nicht; an die KI wird nur der transkribierte Text als Nachricht gesendet.</p>
+</div>
+</section>
+
+<section>
+<h2>Zweck der Verarbeitung & Rechtsgrundlage</h2>
+<p>Wir verarbeiten die genannten Daten ausschließlich für den Betrieb der App: um KI-Antworten zu liefern, Planlimits durchzusetzen und Abonnements zu prüfen. Rechtsgrundlage ist die Erfüllung des Vertrags mit dir (Art. 6 Abs. 1 lit. b DSGVO) und unser berechtigtes Interesse an der Missbrauchsverhinderung (Art. 6 Abs. 1 lit. f DSGVO). Nachrichten, die du schreibst, können Gesundheitsinformationen enthalten; indem du sie in einer Sitzung schreibst, bittest du uns, sie zur Erzeugung deiner Antwort zu verarbeiten (Art. 9 Abs. 2 lit. a DSGVO).</p>
+<p>Einige unserer Dienstleister haben ihren Sitz außerhalb des Europäischen Wirtschaftsraums, z. B. in den USA. Sie stützen sich auf geeignete Garantien wie Standardvertragsklauseln.</p>
+</section>
+
+<section>
+<h2>Abonnementpläne & Daten</h2>
+
+<div class="tier-card">
+<div class="tier-label free">KOSTENLOSER PLAN</div>
+<h4>Eingeschränkter Zugang</h4>
+<p>3 Sitzungen pro Woche und Craving SOS bis zu 5-mal pro Monat. Die ersten 14 Tage werden von Claude Sonnet betrieben; danach von Claude Haiku. Kein Konto erforderlich. Dein Gesprächsverlauf bleibt auf deinem Gerät.</p>
+</div>
+
+<div class="tier-card premium">
+<div class="tier-label premium">PREMIUM · $29,99/Monat</div>
+<h4>Vollzugang</h4>
+<p>Unbegrenzte Coaching-Sitzungen (Standard, Deep, Open Coach), Voice AI, Craving SOS 24/7, HALT-Trenddiagramme und KI-Gedächtnis — alles betrieben von Claude Sonnet. Dein Gesprächsverlauf bleibt auf deinem Gerät.</p>
+</div>
+</section>
+
+<section>
+<h2>Kein Drittanbieter-Tracking</h2>
+<p>HALT Coach enthält <strong>keine Analyse-SDKs, keine Werbe-Frameworks, keine Absturzmelde-Tools und keine Social-Media-Integrationen</strong>. Die einzigen externen Verbindungen der App gehen zu unserem Backend bei Cloudflare (das Anfragen an die Anthropic API weiterleitet) und zu Apple für Abonnements und Spracherkennung. Wir verkaufen deine Daten nicht und nutzen sie nicht für Werbung.</p>
+</section>
+
+<section>
+<h2>Speicherdauer</h2>
+<p>Gespräche und Check-ins bleiben auf deinem Gerät, bis du sie oder die App löschst. Der anonyme Geräte-Eintrag in unserem Backend (Geräte-ID und Nutzungszähler) wird so lange gespeichert, wie es für die Planlimits und die Missbrauchsverhinderung nötig ist, und kann auf Anfrage gelöscht werden.</p>
+</section>
+
+<section>
+<h2>Deine Rechte & Kontrolle</h2>
+<div class="card">
+<ul>
+<li><strong>Zugriff:</strong> Dein Verlauf ist lokal gespeichert — öffne die App, um ihn jederzeit zu sehen.</li>
+<li><strong>Sitzungen löschen:</strong> Wische eine Sitzung nach links, um sie dauerhaft zu löschen.</li>
+<li><strong>Lokale Daten löschen:</strong> Lösche die App vom iPhone — alle lokalen Daten werden dauerhaft entfernt.</li>
+<li><strong>Server-Eintrag löschen:</strong> Schreib uns, dann löschen wir den anonymen Geräte-Eintrag, soweit wir ihn deinem Gerät zuordnen können.</li>
+<li><strong>Abonnement kündigen:</strong> Jederzeit über App Store → Konto → Abonnements kündbar.</li>
+<li><strong>DSGVO-Rechte:</strong> Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Widerspruch sowie das Recht, dich bei deiner Datenschutzaufsichtsbehörde zu beschweren. Kontakt: haltcoach.app@gmail.com</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>Datenschutz für Kinder</h2>
+<p>HALT Coach richtet sich an Nutzer ab 18 Jahren. Wir erheben wissentlich keine Daten von Minderjährigen. Die App-Inhalte sind ausschließlich für Erwachsene in der Nachbehandlungsphase konzipiert.</p>
+</section>
+
+<section>
+<h2>Änderungen dieser Richtlinie</h2>
+<p>Wenn wir ändern, wie die App Daten verarbeitet, aktualisieren wir diese Seite und das oben genannte Datum des Inkrafttretens.</p>
+</section>
+
+<section>
+<h2>Kontakt</h2>
+<div class="contact-block">
+<p>Fragen zu dieser Richtlinie oder deinen Daten? Schreib uns direkt.</p>
+<a href="mailto:haltcoach.app@gmail.com" class="contact-link">
+✉ haltcoach.app@gmail.com
+</a>
+</div>
+</section>
+
+</div>
+
+<footer>
+<p>© 2026 HALT Coach · Michał Karczewski · Privacy by Design</p>
+<span>v1.1 · October 2026</span>
+</footer>
 
 </div>
 
 <script>
 function setLang(lang) {
-  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.lang-tab').forEach(el => {
-    el.classList.remove('active');
-    el.setAttribute('aria-selected', 'false');
-  });
-  document.getElementById('lang-' + lang).classList.add('active');
-  const tabs = document.querySelectorAll('.lang-tab');
-  const idx = ['en','pl','de'].indexOf(lang);
-  tabs[idx].classList.add('active');
-  tabs[idx].setAttribute('aria-selected', 'true');
-  document.documentElement.lang = lang;
+document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+document.querySelectorAll('.lang-tab').forEach(el => {
+el.classList.remove('active');
+el.setAttribute('aria-selected', 'false');
+});
+document.getElementById('lang-' + lang).classList.add('active');
+const tabs = document.querySelectorAll('.lang-tab');
+const idx = ['en','pl','de'].indexOf(lang);
+tabs[idx].classList.add('active');
+tabs[idx].setAttribute('aria-selected', 'true');
+document.documentElement.lang = lang;
 }
 </script>
 
